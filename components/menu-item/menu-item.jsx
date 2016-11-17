@@ -1,36 +1,37 @@
 import React from 'react';
 import MenuList from '../menu-list';
 class MenuItem extends React.Component {
-  constructor() {
-    super();
-    this.renderInnerList = this.renderInnerList.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-  }
   renderInnerList() {
-    if (this.props.items) {
+    const {items, open: innerListShown} = this.props;
+    if (items) {
       return (
         <MenuList 
-          shown={this.props.innerListShown} 
-          items={this.props.items} />
+          show={innerListShown} 
+          items={items} />
         )
     } else {
       return null;
     }
   }
-  handleClick() {
+  handleClick(e) {
+    e.stopPropagation();
     if (this.props.items) {
-      this.toggleInnerList();
       this.props.toggleInnerList();
     }
   }
   render() {
     return (
-      <div onClick={this.handleClick}>
-        {this.props.title}
+      <div onClick={(e) => this.handleClick(e)}>
+        {this.props.title + ' ' + this.props.number} 
         {this.renderInnerList()}
       </div>
       )
   }
 }
+
+MenuItem.propTypes = {
+  items: React.PropTypes.array,
+  open: React.PropTypes.bool
+};
 
 export default MenuItem;

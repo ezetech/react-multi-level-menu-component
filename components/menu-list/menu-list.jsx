@@ -4,7 +4,9 @@ import MenuItem from '../menu-item';
 class MenuList extends React.Component {
   constructor(...args) {
     super(...args);
-    this.toggleItemsList = this.toggleItemsList.bind(this);
+    this.state = {
+      openItem: null
+    }
   }
   componentWillReceiveProps(nextProps) {
 
@@ -14,25 +16,39 @@ class MenuList extends React.Component {
       return (
         <MenuItem 
           key={i}
-          toggleInnerList={this.toggleItemsList} 
+          open = { this.state.openItem === i }
+          number = {i}
+          toggleInnerList={this.getItemListHandler(i)} 
           {...item}/>
       )
     });
   }
-  toggleItemsList() {
-
+  toggleItemsList(index) {
+    if (index === this.state.openItem) {
+      this.setState({
+        openItem: null
+      });
+    } else {
+      this.setState({
+        openItem: index
+      });
+    }
+    
+  }
+  getItemListHandler(index) {
+    return () => this.toggleItemsList(index);
   }
   getStyle() {
-    const { position, position: { top, left } } = this.props;
-
+    const { position } = this.props;
     if (position) {
-      return { position: 'absolute', top, left }; 
+      const { position: { top, left } } = this.props;
+      return { position: 'absolute', top, left };
     } else {
       return null;
     }
   }
   render() {
-    if (this.props.show) {
+    if (!this.props.show) {
       return null;
     }
     return (

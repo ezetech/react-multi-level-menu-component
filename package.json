@@ -16,11 +16,11 @@
   "author": "none",
   "license": "UNLICENSED",
   "dependencies": {
-    "classnames": "^2.2.5",
-    "lodash": "^4.17.2",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "webpack": "^1.13.3"
+    "classnames": "2.2.5",
+    "lodash": "4.17.2",
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
+    "webpack": "1.13.3"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
