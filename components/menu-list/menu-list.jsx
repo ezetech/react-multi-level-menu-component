@@ -53,10 +53,10 @@ class MenuList extends React.Component {
     return (element) => this.toggleItemsList(index, element);
   }
   calculateItemsListPosition(element) {
-    const top = element.offsetTop;
-    const left  = element.offsetWidth;
-
-    return { top, left }
+     const top = element.offsetTop;
+     const left  = element.offsetWidth;
+ 
+     return { top, left }
   }
   getStyle() {
     const { position } = this.props;
