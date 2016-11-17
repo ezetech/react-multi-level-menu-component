@@ -1,10 +1,11 @@
 import React from 'react';
 import MenuList from '../../components/menu-list';
 import items from '../../mock-items-config';
+import styles from './menu-button.scss';
 
 class MenuButton extends React.Component {
-  constructor() {
-    super();
+  constructor(...args) {
+    super(...args);
     this.state = {
       menuShown: false
     }
@@ -18,11 +19,13 @@ class MenuButton extends React.Component {
       <div>
         <button onClick={this.toggleMenu}>Toggle</button>
         <MenuList 
-        position={{
-          top: 50,
-          left: 40
-        }}
-        show={this.state.menuShown} items={items} />
+          listClass={styles['context-menu'] + ' '  + styles['dark-transparent']}
+          itemClass={styles['context-menu-item']}
+          position={{
+            top: 50,
+            left: 40
+          }}
+          show={this.state.menuShown} items={items} />
       </div>
     )
   }

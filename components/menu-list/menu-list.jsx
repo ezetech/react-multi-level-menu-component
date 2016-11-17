@@ -1,58 +1,79 @@
 import React from 'react';
 import MenuItem from '../menu-item';
+import styles from './menu-list.scss';
 
 class MenuList extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      openItem: null
+      openItem: null,
+      openItemPosition: null
     }
   }
   componentWillReceiveProps(nextProps) {
-
+    if (!nextProps.show) {
+      this.setState({
+        openItem: null,
+        openItemPosition: null
+      });
+    }
   }
   renderItems() {
-    return this.props.items.map((item, i) => {
+    const { listClass, itemClass, items } = this.props;
+    
+    return items.map((item, i) => {
       return (
         <MenuItem 
-          key={i}
+          key = { i }
           open = { this.state.openItem === i }
-          number = {i}
-          toggleInnerList={this.getItemListHandler(i)} 
+          innerListPosition = { this.state.openItemsListPosition }
+          number = { i }
+          itemClass = { itemClass }
+          listClass = { listClass }
+          toggleInnerList = { this.getItemListHandler(i) } 
           {...item}/>
       )
     });
   }
-  toggleItemsList(index) {
+  toggleItemsList(index, element) {
     if (index === this.state.openItem) {
       this.setState({
-        openItem: null
+        openItem: null,
+        openItemsListPosition: null
       });
     } else {
       this.setState({
-        openItem: index
+        openItem: index,
+        openItemsListPosition: this.calculateItemsListPosition(element)
       });
     }
     
   }
   getItemListHandler(index) {
-    return () => this.toggleItemsList(index);
+    return (element) => this.toggleItemsList(index, element);
+  }
+  calculateItemsListPosition(element) {
+    const top = element.offsetTop;
+    const left  = element.offsetWidth;
+
+    return { top, left }
   }
   getStyle() {
     const { position } = this.props;
     if (position) {
       const { position: { top, left } } = this.props;
-      return { position: 'absolute', top, left };
+      return { top, left };
     } else {
       return null;
     }
   }
   render() {
-    if (!this.props.show) {
+    const {listClass, show} = this.props;
+    if (!show) {
       return null;
     }
     return (
-      <div style={this.getStyle()}>
+      <div style = {this.getStyle()} className = { styles['list'] + ' '  + listClass }>
         {this.renderItems()}
       </div>
       )
@@ -66,6 +87,8 @@ MenuList.propTypes = {
     top: React.PropTypes.number,
     left: React.PropTypes.number
   }),
+  listClass: React.PropTypes.string,
+  itemClass: React.PropTypes.string
 };
 
 export default MenuList;
