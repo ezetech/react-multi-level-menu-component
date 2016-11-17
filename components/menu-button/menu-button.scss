@@ -1,0 +1,63 @@
+@import '../../constants/variables.scss';
+
+:local {
+  .context-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font: 12px Avenir;
+    z-index: 100;
+  }
+
+  .dark-transparent {
+    padding: 10px 0;
+    background-color: rgba(51, 51, 49, 0.5);
+    color: $text-white;
+    .context-menu-item {
+      padding: 5px 15px;
+      &:hover {
+        color: $text-blue;
+      }
+    }
+  }
+
+  .grey-solid {
+    padding: 5px 0;
+    background-color: #575754;
+    color: $text-grey;
+    .context-menu-item {
+      padding: 5px;
+      width: 95px;
+      &:hover {
+        color: $text-white;
+      }
+    }
+  }
+
+  .context-menu-item {
+    box-sizing: border-box;
+    cursor: pointer;
+    i {
+      padding-left: 8px;
+    }
+  }
+
+  .context-menu-delimiter {
+    display: inline-block;
+    width: 100%;
+    height: 1px;
+    background-color: #3a3a3a;
+  }
+
+  .triangle-top::before {
+    //content: url("../../images/context.menu.triangle.svg");
+    position: absolute;
+    display: block;
+    top: -10px;
+    left: 45px;
+  }
+}

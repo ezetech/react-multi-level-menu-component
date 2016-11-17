@@ -5,11 +5,17 @@ class MenuList extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
-      openItem: null
+      openItem: null,
+      openItemPosition: null
     }
   }
   componentWillReceiveProps(nextProps) {
-
+    if (!nextProps.show) {
+       this.setState({
+         openItem: null,
+         openItemPosition: null
+       });
+     }
   }
   renderItems() {
     return this.props.items.map((item, i) => {
@@ -18,26 +24,35 @@ class MenuList extends React.Component {
           key={i}
           open = { this.state.openItem === i }
           number = {i}
+          innerListPosition = { this.state.openItemsListPosition }
           toggleInnerList={this.getItemListHandler(i)} 
           {...item}/>
       )
     });
   }
-  toggleItemsList(index) {
+  toggleItemsList(index, element) {
     if (index === this.state.openItem) {
       this.setState({
-        openItem: null
+        openItem: null,
+        openItemsListPosition: null
       });
     } else {
       this.setState({
-        openItem: index
+        openItem: index,
+        openItemsListPosition: this.calculateItemsListPosition(element)
       });
     }
     
   }
   getItemListHandler(index) {
-    return () => this.toggleItemsList(index);
+    return (element) => this.toggleItemsList(index, element);
   }
+  calculateItemsListPosition(element) {
+     const top = element.offsetTop;
+     const left  = element.offsetWidth;
+ 
+     return { top, left }
+    }
   getStyle() {
     const { position } = this.props;
     if (position) {
