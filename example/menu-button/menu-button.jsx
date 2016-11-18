@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuList from '../../components/menu-list';
-import items from '../../mock-items-config';
+import MenuList from '../../src/menu-list';
+import items from '../mock-items-config';
 import styles from './menu-button.scss';
 
 class MenuButton extends React.Component {
