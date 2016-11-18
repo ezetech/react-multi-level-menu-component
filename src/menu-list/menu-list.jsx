@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuItem from '../menu-item';
-import styles from './menu-list.scss';
 
 class MenuList extends React.Component {
   constructor(...args) {
@@ -68,12 +67,12 @@ class MenuList extends React.Component {
     }
   }
   render() {
-    const {listClass, show} = this.props;
-    if (!show) {
+    const {listClass, items, show} = this.props;
+    if (!show || !items) {
       return null;
     }
     return (
-      <div style = {this.getStyle()} className = { styles['list'] + ' '  + listClass }>
+      <div style = {this.getStyle()} className = { listClass }>
         {this.renderItems()}
       </div>
       )
