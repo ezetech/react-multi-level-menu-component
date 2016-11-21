@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { default as chai, expect } from 'chai';
 import spies from 'chai-spies';
 import { shallow, mount } from 'enzyme';
