@@ -1,6 +1,5 @@
 import React from 'react';
 import MenuList from '../../src/menu-list';
-import styles from './menu-button.scss';
 import { deepItems, flatItems } from '../items-config-mock';
 
 class MenuButton extends React.Component {
@@ -19,16 +18,13 @@ class MenuButton extends React.Component {
   }
   render() {
     return(
-      <div>
-        <button onClick={this.toggleMenu}>Toggle</button>
+      <div className="example-buttonContainer">
+        <button className="example-button" onClick={this.toggleMenu}>Toggle</button>
         <MenuList
-          listClass={styles['context-menu'] + ' '  + styles['dark-transparent']}
-          itemClass={styles['context-menu-item']}
-          triangleClassName={styles['context-menu-item-triangle']}
-          position={{
-            top: 50,
-            left: 40
-          }}
+          listClass={'context-menu dark-transparent'}
+          itemClass={'context-menu-item'}
+          triangleClassName={'context-menu-item-triangle'}
+
           clickItemCallback={this.clickItemCallback}
           show={this.state.menuShown} items={deepItems} />
       </div>

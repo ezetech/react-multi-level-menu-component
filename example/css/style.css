@@ -1,0 +1,63 @@
+.example-buttonContainer {
+  display: inline-block;
+  position: relative;
+}
+.example-title {
+  color: #216ba5;
+  font-weight: 400;
+  font-size: 18px;
+}
+.example-button {
+  background-color: #1d5d90;
+  color: white;
+  outline: none;
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.example-section {
+  background-color: #f5f8fb;
+  margin: 30px;
+  border-radius: 3px;
+  border: solid 1px #d8e4ef;
+  padding: 20px 20px 100px 20px;
+  text-align: center;
+}
+.context-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font: 12px Avenir;
+  z-index: 100;
+}
+.dark-transparent {
+  padding: 10px 0;
+  background-color: #1d5d90;
+  color: white;
+}
+.dark-transparent .context-menu-item {
+  padding: 5px 15px;
+}
+.context-menu-item {
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.context-menu-item-triangle {
+  transform: translateX(6px)  translateY(2px);
+}
+.context-menu-item-triangle path {
+    fill: white;
+    border: white;
+  }
+}
+.example-greyContainer {
+  color: #1d5d90;
+  display: inline-block;
+  padding: 60px;
+  background-color: #e8e7e7;
+}

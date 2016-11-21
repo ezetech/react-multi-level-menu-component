@@ -4,4 +4,4 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render((
   <MenuButton/>),
-document.getElementById('container'));
+document.getElementById('buttonContainer'));

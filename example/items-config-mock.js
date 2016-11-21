@@ -1,44 +1,52 @@
 export const flatItems = [
   {
-    text: 'Item 1',
-    name: 'item-1'
+    text: 'Copy',
+    name: 'copy'
   },
   {
-    text: 'Item 2',
-    name: 'item-2'
+    text: 'Cut',
+    name: 'cut'
+  },
+  {
+    text: 'Rename',
+    name: 'rename'
+  },
+  {
+    text: 'Delete',
+    name: 'delete'
   }
 ];
 export const deepItems = [
   {
-    text: 'Item 1',
-    name: 'item-1',
+    text: 'Find',
+    name: 'find',
     items: [{
-      name: 'sub-item-11',
-      text: 'SubItem 11',
+      name: 'find-by-name',
+      text: 'By name',
       items: [{
-        name: 'sub-item-111',
-        text: 'SubItem 112'
+        text: 'First',
+        name: 'find-by-name-first'
       },
       {
-        name: 'sub-item-121',
-        text: 'SubItem 122'
+        text: 'All',
+        name: 'find-by-name-first'
       }]
     },
     {
-      name: 'sub-item-12',
-      text: 'SubItem 12'
+      text: 'By id',
+      name: 'find-by-id'
     }]
   },
   {
-    text: 'Item 2',
-    name: 'item-2',
+    text: 'Replace',
+    name: 'replace',
     items: [{
-      name: 'sub-item-21',
-      text: 'SubItem 21'
+      name: 'replace-first',
+      text: 'First'
     },
     {
-      name: 'sub-item-22',
-      text: 'SubItem 22'
+      name: 'replace-all',
+      text: 'All'
     }]
   }
 ];
