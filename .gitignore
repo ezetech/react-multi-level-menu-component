@@ -1,2 +1,7 @@
+.idea
+dist
+lib
+tmp
+coverage
 node_modules/
 example/node_modules

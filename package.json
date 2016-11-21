@@ -1,22 +1,34 @@
 {
-  "name": "enzyme_sample",
+  "name": "@ezetech/react-multi-level-menu-component",
   "version": "0.0.1",
-  "description": "enzyme sample",
-  "main": "none",
-  "scripts": {
-    "test": "mocha test/setup.js test/**.spec.jsx"
+  "description": "Multi level menu react component",
+  "keywords": [
+    "eze.tech",
+    "menu",
+    "multu-level menu",
+    "react",
+    "react-component"
+  ],
+  "bugs": {
+    "url": "https://github.com/github.com/ezetech/react-multi-level-menu-component/issues"
   },
+  "license": "MIT",
+  "author": {
+    "url": "http://eze.tech/"
+  },
+  "files": [
+    "*.md",
+    "dist",
+    "lib"
+  ],
   "repository": {
     "type": "git",
-    "url": "none"
+    "url": "git://github.com/ezetech/react-multi-level-menu-component.git"
   },
-  "keywords": [
-    "none"
-  ],
-  "author": "none",
-  "license": "UNLICENSED",
-  "dependencies": {
-    "react": "15.3.2"
+  "scripts": {
+    "test": "npm run test:cs && npm run test:unit",
+    "test:cs": "eslint src/**/*.jsx test/**/*.jsx",
+    "test:unit": "mocha test/setup.js test/**.jsx"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
@@ -29,10 +41,19 @@
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
     "enzyme": "^2.6.0",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.4.1",
+    "eslint-plugin-standard": "^2.0.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.1.2",
     "react-addons-test-utils": "15.3.2",
     "react-dom": "^15.4.0",
     "webpack": "^1.13.3"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
   }
 }
