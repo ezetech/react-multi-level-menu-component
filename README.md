@@ -42,7 +42,7 @@ Boolean which controls whether a menu should be shown.
 ### items 
 An array of items with next structure:
 ```javascript
-var flatItems = [
+var items = [
   {
     text: 'Item 1',
     name: 'item-1'
