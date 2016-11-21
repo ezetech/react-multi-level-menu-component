@@ -36,12 +36,12 @@
   z-index: 100;
 }
 .dark-transparent {
-  padding: 10px 0;
   background-color: #1d5d90;
   color: white;
 }
 .dark-transparent .context-menu-item {
-  padding: 5px 15px;
+  padding: 10px 15px;
+  border-radius: 3px;
 }
 .context-menu-item {
   box-sizing: border-box;
