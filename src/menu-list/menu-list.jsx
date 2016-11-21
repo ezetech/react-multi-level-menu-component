@@ -18,7 +18,7 @@ class MenuList extends React.Component {
     }
   }
   renderItems() {
-    const { listClass, itemClass, items, clickItemCallback } = this.props;
+    const { listClass, itemClass, items, clickItemCallback, triangleClassName } = this.props;
 
     return items.map((item, i) => {
       return (
@@ -28,6 +28,7 @@ class MenuList extends React.Component {
           innerListPosition = {this.state.openItemsListPosition}
           number = {i}
           clickItemCallback = {clickItemCallback}
+          triangleClassName = {triangleClassName}
           itemClass = {itemClass}
           listClass = {listClass}
           text={item.text}
@@ -89,6 +90,7 @@ class MenuList extends React.Component {
 MenuList.propTypes = {
   items: React.PropTypes.array,
   show: React.PropTypes.bool,
+  triangleClassName: React.PropTypes.string,
   position: React.PropTypes.shape({
     top: React.PropTypes.number,
     left: React.PropTypes.number

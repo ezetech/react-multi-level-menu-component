@@ -12,7 +12,7 @@ class MenuItem extends React.Component {
     this.handleClick = (e) => this._handleClick(e);
   }
   renderInnerList() {
-    const { itemClass, listClass, items, innerListPosition, open: innerListShown, clickItemCallback } = this.props;
+    const { itemClass, listClass, items, innerListPosition, open: innerListShown, clickItemCallback, triangleClassName } = this.props;
     if (items) {
       return (
         <MenuList
@@ -21,7 +21,18 @@ class MenuItem extends React.Component {
           show = {innerListShown}
           position = {innerListPosition}
           clickItemCallback = {clickItemCallback}
+          triangleClassName = {triangleClassName}
           items = { items } />
+        )
+    } else {
+      return null;
+    }
+  }
+  renderTriangle() {
+    const { items, triangleClassName } = this.props;
+    if (items) {
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" className={triangleClassName} viewBox="0 0 12 12"><path d="M11 6L3.5 10.33L3.5 1.67z" fill="#000000"/></svg>
         )
     } else {
       return null;
@@ -56,6 +67,7 @@ class MenuItem extends React.Component {
         onMouseLeave={this.handleMouseLeave}
         className = {itemClass}>
         {text}
+        {this.renderTriangle()}
         {this.renderInnerList()}
       </div>
       )
@@ -64,6 +76,7 @@ class MenuItem extends React.Component {
 
 MenuItem.propTypes = {
   items: React.PropTypes.array,
+  triangleClassName: React.PropTypes.string,
   open: React.PropTypes.bool,
   innerListPosition: React.PropTypes.shape({
     top: React.PropTypes.number,

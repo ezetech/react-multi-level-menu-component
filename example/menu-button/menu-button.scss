@@ -47,6 +47,13 @@ $text-grey: grey;
       padding-left: 8px;
     }
   }
+  .context-menu-item-triangle {
+    transform: translateX(6px)  translateY(2px);
+    path {
+      fill: white;
+      border: white;
+    }
+  }
 
   .context-menu-delimiter {
     display: inline-block;
@@ -54,7 +61,6 @@ $text-grey: grey;
     height: 1px;
     background-color: #3a3a3a;
   }
-
   .triangle-top::before {
     //content: url("../../images/context.menu.triangle.svg");
     position: absolute;

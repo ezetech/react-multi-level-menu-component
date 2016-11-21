@@ -24,12 +24,13 @@ class MenuButton extends React.Component {
         <MenuList
           listClass={styles['context-menu'] + ' '  + styles['dark-transparent']}
           itemClass={styles['context-menu-item']}
+          triangleClassName={styles['context-menu-item-triangle']}
           position={{
             top: 50,
             left: 40
           }}
           clickItemCallback={this.clickItemCallback}
-          show={this.state.menuShown} items={flatItems} />
+          show={this.state.menuShown} items={deepItems} />
       </div>
     )
   }
