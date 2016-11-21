@@ -1,4 +1,5 @@
 import React from 'react';
+import redux from 'redux';
 import MenuList from '../../src/menu-list';
 import items from '../mock-items-config';
 import styles from './menu-button.scss';
@@ -18,7 +19,7 @@ class MenuButton extends React.Component {
     return(
       <div>
         <button onClick={this.toggleMenu}>Toggle</button>
-        <MenuList 
+        <MenuList
           listClass={styles['context-menu'] + ' '  + styles['dark-transparent']}
           itemClass={styles['context-menu-item']}
           position={{

@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { expect } from 'chai';
+import { default as chai, expect } from 'chai';
+import spies from 'chai-spies';
 import { shallow, mount } from 'enzyme';
 import MenuList from './menu-list.jsx';
 import { flatItems } from './spec-helpers/items-config-mock.js';
 import { deepItems } from './spec-helpers/items-config-mock.js';
+
+chai.use(spies);
+chai.should();
 
 describe('Menu List Component', () => {
   it( 'should be empty when items were not passed', () => {
@@ -33,7 +37,7 @@ describe('Menu List Component', () => {
   });
 });
 describe('Menu List Component - Hover on item', () => {
-    it( 'menu item which have it\'s own items should have inner list when hovered', () => {
+    it( 'menu item which has it\'s own items should have inner list when hovered', () => {
       const itemClass = 'itemClass';
       const listClass = 'listClass';
       const itemSelector = '.' + itemClass;
@@ -43,7 +47,7 @@ describe('Menu List Component - Hover on item', () => {
       wrapper.find(itemSelector).first().simulate('mouseover');
       expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(1);
   });
-  it( 'menu item which have not it\'s own items should not have inner list when hovered', () => {
+  it( 'menu item which has not it\'s own items should not have inner list when hovered', () => {
       const itemClass = 'itemClass';
       const listClass = 'listClass';
       const itemSelector = '.' + itemClass;
@@ -52,5 +56,41 @@ describe('Menu List Component - Hover on item', () => {
       const wrapper = mount(<MenuList show="true" items={flatItems} listClass={listClass} itemClass={itemClass} />);
       wrapper.find(itemSelector).first().simulate('mouseover');
       expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0);
+  });
+});
+describe('Menu List Component - Click on item', () => {
+  it( 'menu item which has it\'s own items should not trigger callback passed to component with item\'s name', () => {
+      const itemClass = 'itemClass';
+      const listClass = 'listClass';
+      const itemSelector = '.' + itemClass;
+      const listSelector = '.' + listClass;
+      const clickItemCallback = function (itemName) {}
+      const spy = chai.spy(clickItemCallback);
+
+
+      const wrapper = mount(<MenuList 
+        show="true" items={flatItems} 
+        clickItemCallback={clickItemCallback}
+        listClass={listClass} itemClass={itemClass} />);
+
+      wrapper.find(itemSelector).first().simulate('click');
+      spy.should.not.have.been.called();
+  });
+  it( 'menu item which has not it\'s own items should trigger callback passed to component with item\'s name', () => {
+      const itemClass = 'itemClass';
+      const listClass = 'listClass';
+      const itemSelector = '.' + itemClass;
+      const listSelector = '.' + listClass;
+      const clickItemCallback = function (itemName) {}
+      const spy = chai.spy(clickItemCallback);
+
+
+      const wrapper = mount(<MenuList 
+        show="true" items={flatItems} 
+        clickItemCallback={clickItemCallback}
+        listClass={listClass} itemClass={itemClass} />);
+
+      wrapper.find(itemSelector).first().simulate('click');
+      spy.should.have.been.called.with(flatItems[0].name);
   });
 });
