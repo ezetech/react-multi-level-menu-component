@@ -4,7 +4,7 @@
   "description": "enzyme sample",
   "main": "none",
   "scripts": {
-    "test": "mocha tests-setup.js src/**/**.spec.jsx"
+    "test": "mocha test/setup.js test/**.spec.jsx"
   },
   "repository": {
     "type": "git",

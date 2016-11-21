@@ -1,0 +1,29 @@
+[
+   {
+      "text": "Item 1",
+      "name": "item-1",
+      "items": [
+         {
+            "name": "sub-item-11",
+            "text": "SubItem 11"
+         },
+         {
+            "name": "sub-item-12",
+            "text": "SubItem 12"
+         }
+      ]
+   },
+   {
+      "text": "Item 2",
+      "items": [
+         {
+            "name": "sub-item-21",
+            "text": "SubItem 21"
+         },
+         {
+            "name": "sub-item-22",
+            "text": "SubItem 22"
+         }
+      ]
+   }
+]

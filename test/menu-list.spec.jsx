@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { default as chai, expect } from 'chai';
 import spies from 'chai-spies';
 import { shallow, mount } from 'enzyme';
-import MenuList from './menu-list.jsx';
-import { flatItems } from './spec-helpers/items-config-mock.js';
-import { deepItems } from './spec-helpers/items-config-mock.js';
+import MenuList from '../src/menu-list';
+import flatItems from './fixtures/flat-items.json';
+import deepItems from './fixtures/deep-items.json';
 
 chai.use(spies);
 chai.should();
@@ -70,7 +70,7 @@ describe('Menu List Component - Click on item:', () => {
 
 
       const wrapper = mount(<MenuList 
-        show="true" items={flatItems} 
+        show="true" items={deepItems} 
         clickItemCallback={clickItemCallback}
         listClass={listClass} itemClass={itemClass} />);
 
@@ -88,9 +88,9 @@ describe('Menu List Component - Click on item:', () => {
 
       const wrapper = mount(<MenuList 
         show="true" items={flatItems} 
-        clickItemCallback={clickItemCallback}
+        clickItemCallback={spy}
         listClass={listClass} itemClass={itemClass} />);
-      console.log(wrapper.find(itemSelector).first());
+
       wrapper.find(itemSelector).first().simulate('click');
       spy.should.have.been.called.with(flatItems[0].name);
   });
