@@ -2,9 +2,9 @@ import React from 'react'
 import {default as chai, expect} from 'chai'
 import spies from 'chai-spies'
 import {shallow, mount} from 'enzyme'
-import MenuList from '../src/menu-list'
-import flatItems from './fixtures/flat-items.json'
-import deepItems from './fixtures/deep-items.json'
+import MenuList from '../../src/menu-list'
+import flatItems from '../fixtures/flat-items.json'
+import deepItems from '../fixtures/deep-items.json'
 
 chai.use(spies)
 chai.should()

@@ -1,7 +1,7 @@
 import React from 'react'
 import {expect} from 'chai'
 import {shallow} from 'enzyme'
-import MenuItem from '../src/menu-item'
+import MenuItem from '../../src/menu-item'
 
 describe('Menu Item Component', function () {
   it('should has same text as passed', function () {
