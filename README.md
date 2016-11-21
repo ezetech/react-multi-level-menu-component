@@ -57,6 +57,6 @@ var flatItems = [
   }
 ];
 ```
-Where ```javascript text ``` will be used for visual representation of item and ```javascript ``` name will be passed to each  ```javascript clickCallback ``` function.
+Where ``` text ``` will be used for visual representation of item and ```name ```  will be passed to each  ``` clickCallback ``` function.
 
-Any ```javascript  item ``` may have it's own ```javascript  items ``` parameter, they will be rendered as a nested menu for an item. 
+Any ```  item ``` may have it's own ```  items ``` parameter, they will be rendered as a nested menu for an item. 
