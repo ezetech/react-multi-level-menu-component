@@ -1,0 +1,31 @@
+{
+  "name": "multilevel-menu-example",
+  "version": "0.0.1",
+  "description": "Example of using multilelel react menu compnent",
+  "main": "app.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "author": "EzeTech",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "react": "15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "devDependencies": {
+    "webpack": "1.13.3",
+    "babel-core": "6.18.2",
+    "babel-loader": "6.2.7",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "css-loader": "0.25.0",
+    "node-sass": "3.13.0",
+    "react-dom": "^15.3.2",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1"
+  }
+}
