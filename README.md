@@ -1,5 +1,10 @@
 # react-menu-component
 
+[![Build Status](https://travis-ci.org/ezetech/react-multi-level-menu-component.svg?branch=master)](https://travis-ci.org/ezetech/react-multi-level-menu-component)
+[![Dependency Status](https://david-dm.org/ezetech/react-multi-level-menu-component.svg)](https://david-dm.org/ezetech/react-multi-level-menu-component)
+[![devDependency Status](https://david-dm.org/ezetech/react-multi-level-menu-component/dev-status.svg)](https://david-dm.org/ezetech/react-multi-level-menu-component#info=devDependencies)
+[![Coverage Status](https://coveralls.io/repos/github/ezetech/react-multi-level-menu-component/badge.svg?branch=master)](https://coveralls.io/github/ezetech/react-multi-level-menu-component?branch=master)
+
 ## Purpose
 The purpose of the project is to create reusable multilevel menu.
 
