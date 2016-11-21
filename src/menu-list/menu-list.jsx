@@ -1,5 +1,5 @@
-import React from 'react';
-import MenuItem from '../menu-item';
+import React from 'react'
+import MenuItem from '../menu-item'
 
 class MenuList extends React.Component {
   constructor(...args) {
@@ -18,38 +18,43 @@ class MenuList extends React.Component {
     }
   }
   renderItems() {
-    const { listClass, itemClass, items } = this.props;
-    
+    const { listClass, itemClass, items, clickItemCallback } = this.props;
+
     return items.map((item, i) => {
       return (
         <MenuItem 
-          key = { i }
-          open = { this.state.openItem === i }
-          innerListPosition = { this.state.openItemsListPosition }
-          number = { i }
-          itemClass = { itemClass }
-          listClass = { listClass }
-          toggleInnerList = { this.getItemListHandler(i) } 
+          key = {i}
+          open = {this.state.openItem === i}
+          innerListPosition = {this.state.openItemsListPosition}
+          number = {i}
+          clickItemCallback = {clickItemCallback}
+          itemClass = {itemClass}
+          listClass = {listClass}
+          text={item.text}
+          mouseOutHandler = { this.getItemListHider(i) }
+          mouseOverHandler = { this.getItemListShower(i) }
           {...item}/>
       )
     });
   }
-  toggleItemsList(index, element) {
-    if (index === this.state.openItem) {
-      this.setState({
-        openItem: null,
-        openItemsListPosition: null
-      });
-    } else {
-      this.setState({
-        openItem: index,
-        openItemsListPosition: this.calculateItemsListPosition(element)
-      });
-    }
-    
+  hideItemsList(index) {
+    if (index === this.state.openItem)
+    this.setState({
+      openItem: null,
+      openItemsListPosition: null
+    });
   }
-  getItemListHandler(index) {
-    return (element) => this.toggleItemsList(index, element);
+  showItemsList(index, element) {
+    this.setState({
+      openItem: index,
+      openItemsListPosition: this.calculateItemsListPosition(element)
+    });
+  }
+  getItemListShower(index) {
+    return (element) => this.showItemsList(index, element);
+  }
+  getItemListHider(index) {
+    return (element) => this.hideItemsList(index, element);
   }
   calculateItemsListPosition(element) {
      const top = element.offsetTop;
@@ -60,7 +65,7 @@ class MenuList extends React.Component {
   getStyle() {
     const { position } = this.props;
     if (position) {
-      const { position: { top, left } } = this.props;
+      const { position: { top, left }} = this.props;
       return { top, left };
     } else {
       return null;
@@ -72,7 +77,9 @@ class MenuList extends React.Component {
       return null;
     }
     return (
-      <div style = {this.getStyle()} className = { listClass }>
+      <div 
+      style = {this.getStyle()}
+      className = {listClass}>
         {this.renderItems()}
       </div>
       )
@@ -86,6 +93,7 @@ MenuList.propTypes = {
     top: React.PropTypes.number,
     left: React.PropTypes.number
   }),
+  clickItemCallback: React.PropTypes.func,
   listClass: React.PropTypes.string,
   itemClass: React.PropTypes.string
 };

@@ -36,7 +36,7 @@ describe('Menu List Component', () => {
     expect(wrapper.find('MenuItem').length).to.equal(itemsNumber);
   });
 });
-describe('Menu List Component - Hover on item', () => {
+describe('Menu List Component - Hover on item: ', () => {
     it( 'menu item which has it\'s own items should have inner list when hovered', () => {
       const itemClass = 'itemClass';
       const listClass = 'listClass';
@@ -44,7 +44,8 @@ describe('Menu List Component - Hover on item', () => {
       const listSelector = '.' + listClass;
 
       const wrapper = mount(<MenuList show="true" items={deepItems} listClass={listClass} itemClass={itemClass} />);
-      wrapper.find(itemSelector).first().simulate('mouseover');
+      wrapper.find(itemSelector).first().simulate('mouseenter');
+      console.log(wrapper.find(itemSelector).first().find(listSelector));
       expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(1);
   });
   it( 'menu item which has not it\'s own items should not have inner list when hovered', () => {
@@ -58,7 +59,7 @@ describe('Menu List Component - Hover on item', () => {
       expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0);
   });
 });
-describe('Menu List Component - Click on item', () => {
+describe('Menu List Component - Click on item:', () => {
   it( 'menu item which has it\'s own items should not trigger callback passed to component with item\'s name', () => {
       const itemClass = 'itemClass';
       const listClass = 'listClass';
@@ -89,7 +90,7 @@ describe('Menu List Component - Click on item', () => {
         show="true" items={flatItems} 
         clickItemCallback={clickItemCallback}
         listClass={listClass} itemClass={itemClass} />);
-
+      console.log(wrapper.find(itemSelector).first());
       wrapper.find(itemSelector).first().simulate('click');
       spy.should.have.been.called.with(flatItems[0].name);
   });

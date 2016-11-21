@@ -1,8 +1,7 @@
 import React from 'react';
-import redux from 'redux';
 import MenuList from '../../src/menu-list';
-import items from '../mock-items-config';
 import styles from './menu-button.scss';
+import { deepItems, flatItems } from '../items-config-mock';
 
 class MenuButton extends React.Component {
   constructor(...args) {
@@ -15,6 +14,9 @@ class MenuButton extends React.Component {
   toggleMenu() {
     this.setState({menuShown: !this.state.menuShown});
   }
+  clickItemCallback(itemName) {
+    console.log(itemName);
+  }
   render() {
     return(
       <div>
@@ -26,7 +28,8 @@ class MenuButton extends React.Component {
             top: 50,
             left: 40
           }}
-          show={this.state.menuShown} items={items} />
+          clickItemCallback={this.clickItemCallback}
+          show={this.state.menuShown} items={flatItems} />
       </div>
     )
   }

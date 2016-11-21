@@ -16,9 +16,4 @@ describe('Menu Item Component', () => {
     const wrapper = shallow(<MenuItem itemClass={classToCheck} />);
     expect(wrapper.find('div').hasClass(classToCheck)).to.be.true;
   });
-  it( 'should has same class as passed', () => {
-    const classToCheck = 'someClass';
-    const wrapper = shallow(<MenuItem itemClass={classToCheck} />);
-    expect(wrapper.find('div').hasClass(classToCheck)).to.be.true;
-  });
 });
