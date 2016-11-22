@@ -2,6 +2,8 @@
   "name": "@ezetech/react-multi-level-menu-component",
   "version": "0.0.1",
   "description": "Multi level menu react component",
+  "main": "./lib/index.js",
+  "browser": "./dist/MultiLevelMenu.js",
   "keywords": [
     "eze.tech",
     "menu",
@@ -27,12 +29,17 @@
     "url": "git://github.com/ezetech/react-multi-level-menu-component.git"
   },
   "scripts": {
+    "clean": "rimraf lib dist coverage",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": "npm run test:cs && nyc npm run test:unit",
     "test:cs": "eslint src/**/*.jsx test/**/*.jsx",
-    "test:unit": "mocha"
+    "test:unit": "mocha",
+    "dist": "webpack -p",
+    "build": "babel ./src -d ./lib --source-maps",
+    "prerelease": "npm run test && npm run build && npm run dist"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
     "babel-preset-airbnb": "^2.1.1",
