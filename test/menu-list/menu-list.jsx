@@ -68,9 +68,9 @@ describe('Menu List Component - Hover on item: ', function () {
     const itemSelector = '.' + itemClass
     const listSelector = '.' + listClass
 
-    const wrapper = mount(<MenuList show items={flatItems} listClass={listClass} itemClass={itemClass}/>)
+    const wrapper = mount(<MenuList show items={deepItems} listClass={listClass} itemClass={itemClass}/>)
     wrapper.find(itemSelector).first().simulate('mouseenter')
-    wrapper.find(itemSelector).first().simulate('mouseover')
+    wrapper.find(itemSelector).first().simulate('mouseleave')
     setTimeout(function () {
       expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0)
       done()
