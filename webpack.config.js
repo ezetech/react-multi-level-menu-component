@@ -1,13 +1,22 @@
 /* eslint-env node */
 
 module.exports = {
-  entry: './src/menu-list/index.js',
+  entry: './src/index.js',
   devtool: 'source-map',
   output: {
     path: __dirname + '/dist',
     filename: 'MultiLevelMenu.js',
     library: 'MultiLevelMenu',
     libraryTarget: 'umd'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx|js?$/,
+        loader: 'babel',
+        exclude: /node_modules/
+      }
+    ]
   },
   externals: {
     'react': {
