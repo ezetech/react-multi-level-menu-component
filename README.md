@@ -8,6 +8,14 @@
 ## Purpose
 The purpose of the project is to create reusable multilevel menu.
 
+## Installing via npm
+   
+`npm install @ezetech/react-multi-level-menu-component --save`
+
+## Usage
+   
+`import MenuList from '@ezetech/react-multi-level-menu-component';`   
+   
 ## Configuration
 Basic use of the MultilevelMenu can be described with:
 ```javascript
