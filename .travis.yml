@@ -3,6 +3,7 @@ node_js:
 - '6.9'
 after_success:
 - npm run coverage
+before_deploy: npm run build
 deploy:
   provider: npm
   email: opensource@eze.tech
