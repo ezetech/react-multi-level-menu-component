@@ -61,6 +61,20 @@ describe('Menu List Component - Hover on item: ', function () {
     wrapper.find(itemSelector).first().simulate('mouseover')
     expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0)
   })
+  it('menu item which has it\'s own items should not have inner list when hovered and left in 500ms', function (done) {
+    const itemClass = 'itemClass'
+    const listClass = 'listClass'
+    const listHideTimeout = 500
+    const itemSelector = '.' + itemClass
+    const listSelector = '.' + listClass
+
+    const wrapper = mount(<MenuList show items={flatItems} listClass={listClass} itemClass={itemClass}/>)
+    wrapper.find(itemSelector).first().simulate('mouseenter')
+    wrapper.find(itemSelector).first().simulate('mouseover')
+    setTimeout(function () {
+      expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0)
+    }, listHideTimeout)
+  })
 })
 
 describe('Menu List Component - Click on item:', function () {

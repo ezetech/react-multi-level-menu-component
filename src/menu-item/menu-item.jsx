@@ -43,7 +43,6 @@ class MenuItem extends React.Component {
       return null
     }
   }
-
   _handleClick (e) {
     e.stopPropagation()
 
@@ -52,18 +51,14 @@ class MenuItem extends React.Component {
       clickItemCallback(name)
     }
   }
-
   _handleMouseEnter (e) {
     this.props.mouseOverHandler(e.currentTarget)
   }
-
   _handleMouseLeave (e) {
     const currentTarget = e.currentTarget
-    const {items, mouseOutHandler} = this.props
+    const {mouseOutHandler} = this.props
     setTimeout(() => {
-      if (items) {
-        mouseOutHandler(currentTarget)
-      }
+      mouseOutHandler(currentTarget)
     }, 500)
   }
 
