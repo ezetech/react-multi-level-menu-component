@@ -73,6 +73,7 @@ describe('Menu List Component - Hover on item: ', function () {
     wrapper.find(itemSelector).first().simulate('mouseover')
     setTimeout(function () {
       expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0)
+      done()
     }, listHideTimeout)
   })
 })
