@@ -40,6 +40,10 @@ Takes an object with to parameteres: top and left. Will be used to position menu
 
 Function which will be called when not a nested item will be clicked. Each click callback receives item name.
 
+### listHideDelay
+
+Number of miliseconds which specifies a delay for closing nested menu.
+
 ### show
 
 Boolean which controls whether a menu should be shown.
