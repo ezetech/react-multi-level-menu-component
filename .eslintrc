@@ -6,7 +6,7 @@
   "plugins": [
     "react"
   ],
-  "extends": "standard",
+  "extends": "airbnb",
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -60,6 +60,8 @@
     "react/react-in-jsx-scope": 2,
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
-    "react/wrap-multilines": 0
+    "react/wrap-multilines": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "no-unused-expressions": 0,
   }
 }
