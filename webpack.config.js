@@ -1,12 +1,11 @@
 /* eslint-env node */
 
 module.exports = {
-  entry: './src/index.js',
-  devtool: 'source-map',
+  entry: './lib/index.js',
   output: {
     path: __dirname + '/dist',
-    filename: 'MultiLevelMenu.js',
-    library: 'MultiLevelMenu',
+    filename: 'MenuList.js',
+    library: 'MenuList',
     libraryTarget: 'umd'
   },
   module: {
