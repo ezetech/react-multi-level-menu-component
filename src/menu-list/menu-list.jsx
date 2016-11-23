@@ -13,6 +13,7 @@ class MenuList extends React.Component {
     this.state = {
       openItem: null,
       openItemPosition: null,
+      listHideTimeout: null,
     };
   }
 
@@ -50,17 +51,27 @@ class MenuList extends React.Component {
       openItem: index,
       openItemsListPosition: MenuList.calculateItemsListPosition(element),
     });
+    clearTimeout(this.state.listHideTimeout);
   }
   hideItemsList(index) {
-    if (index === this.state.openItem) {
-      this.setState({
-        openItem: null,
-        openItemsListPosition: null,
-      });
-    }
+    const listHideTimeout = setTimeout(() => {
+      if (index === this.state.openItem) {
+        this.setState({
+          openItem: null,
+          openItemsListPosition: null,
+        });
+      }
+    }, this.props.listHideDelay);
+    this.setState({ listHideTimeout });
   }
   renderItems() {
-    const { listClass, itemClass, items, clickItemCallback, triangleClassName } = this.props;
+    const {
+      listClass,
+      itemClass,
+      items,
+      clickItemCallback,
+      triangleClassName,
+      listHideDelay } = this.props;
 
     return items.map((item, i) => (
       <MenuItem
@@ -72,6 +83,7 @@ class MenuList extends React.Component {
         triangleClassName={triangleClassName}
         itemClass={itemClass}
         listClass={listClass}
+        listHideDelay={listHideDelay}
         text={item.text}
         mouseOutHandler={this.getItemListHider(i)}
         mouseOverHandler={this.getItemListShower(i)}
@@ -104,6 +116,7 @@ MenuList.propTypes = {
   clickItemCallback: React.PropTypes.func,
   listClass: React.PropTypes.string,
   itemClass: React.PropTypes.string,
+  listHideDelay: React.PropTypes.number,
 };
 
 export default MenuList;

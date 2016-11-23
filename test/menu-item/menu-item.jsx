@@ -39,7 +39,7 @@ describe('Menu Item Component', () => {
   });
   it('should call mouse out callback in 500ms when mouseleave', (done) => {
     const mouseOutHandler = () => {};
-    const menuHideTimeout = 500;
+    const menuHideDelay = 500;
     const spy = chai.spy(mouseOutHandler);
     const wrapper = shallow(<MenuItem mouseOutHandler={spy} />);
 
@@ -47,6 +47,6 @@ describe('Menu Item Component', () => {
     setTimeout(() => {
       spy.should.have.been.called.once();
       done();
-    }, menuHideTimeout);
+    }, menuHideDelay);
   });
 });

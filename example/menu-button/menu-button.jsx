@@ -24,7 +24,7 @@ class MenuButton extends React.Component {
           listClass={'context-menu dark-transparent'}
           itemClass={'context-menu-item'}
           triangleClassName={'context-menu-item-triangle'}
-
+          listHideDelay={500}
           clickItemCallback={this.clickItemCallback}
           show={this.state.menuShown} items={deepItems} />
       </div>

@@ -40,8 +40,8 @@ describe('Menu List Component', () => {
   });
 });
 
-describe('Menu List Component - Hover on item: ', () => {
-  it('menu item which has it\'s own items should have inner list when hovered', () => {
+describe('Menu List Component - Hover on item with inner list: ', () => {
+  it('should have inner list when hovered', () => {
     const itemClass = 'itemClass';
     const listClass = 'listClass';
     const itemSelector = `.${itemClass}`;
@@ -53,8 +53,49 @@ describe('Menu List Component - Hover on item: ', () => {
     wrapper.find(itemSelector).first().simulate('mouseenter');
     expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(1);
   });
+  it('should not have inner list when hovered and left after listHideTimeout time has passed', (done) => {
+    const itemClass = 'itemClass';
+    const listClass = 'listClass';
+    const listHideTimeout = 300;
+    const itemSelector = `.${itemClass}`;
+    const listSelector = `.${listClass}`;
 
-  it('menu item which has not it\'s own items should not have inner list when hovered', () => {
+    const wrapper = mount(<MenuList
+      show items={deepItems}
+      listClass={listClass}
+      listHideTimeout={listHideTimeout}
+      itemClass={itemClass} />);
+    wrapper.find(itemSelector).first().simulate('mouseenter');
+    wrapper.find(itemSelector).first().simulate('mouseleave');
+    setTimeout(() => {
+      expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0);
+      done();
+    }, listHideTimeout);
+  });
+  it('should have inner list when hovered and left and hovered back again after listHideTimeout time has passed', (done) => {
+    const itemClass = 'itemClass';
+    const listClass = 'listClass';
+    const listHideTimeout = 600;
+    const timeGap = 50; // to ensure that menu doesn't hide in case of unprecise time measurement
+    const itemSelector = `.${itemClass}`;
+    const listSelector = `.${listClass}`;
+
+    const wrapper = mount(<MenuList
+      show items={deepItems}
+      listClass={listClass}
+      listHideTimeout={listHideTimeout}
+      itemClass={itemClass} />);
+    wrapper.find(itemSelector).first().simulate('mouseenter');
+    wrapper.find(itemSelector).first().simulate('mouseleave');
+    wrapper.find(itemSelector).first().simulate('mouseenter');
+    setTimeout(() => {
+      expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(1);
+      done();
+    }, listHideTimeout + timeGap);
+  });
+});
+describe('Menu List Component - Hover on item without inner list: ', () => {
+  it('should not have inner list when hovered', () => {
     const itemClass = 'itemClass';
     const listClass = 'listClass';
     const itemSelector = `.${itemClass}`;
@@ -67,26 +108,7 @@ describe('Menu List Component - Hover on item: ', () => {
     wrapper.find(itemSelector).first().simulate('mouseover');
     expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0);
   });
-  it('menu item which has it\'s own items should not have inner list when hovered and left in 500ms', (done) => {
-    const itemClass = 'itemClass';
-    const listClass = 'listClass';
-    const listHideTimeout = 500;
-    const itemSelector = `.${itemClass}`;
-    const listSelector = `.${listClass}`;
-
-    const wrapper = mount(<MenuList
-      show items={deepItems}
-      listClass={listClass}
-      itemClass={itemClass} />);
-    wrapper.find(itemSelector).first().simulate('mouseenter');
-    wrapper.find(itemSelector).first().simulate('mouseleave');
-    setTimeout(() => {
-      expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0);
-      done();
-    }, listHideTimeout);
-  });
 });
-
 describe('Menu List Component - Click on item:', () => {
   it('menu item which has it\'s own items should not trigger callback passed to component with item\'s name', () => {
     const itemClass = 'itemClass';
