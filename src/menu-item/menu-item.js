@@ -20,16 +20,17 @@ class MenuItem extends React.Component {
       clickItemCallback(name);
     }
   }
+
   handleMouseEnter(e) {
     this.props.mouseOverHandler(e.currentTarget);
   }
+
   handleMouseLeave(e) {
     const currentTarget = e.currentTarget;
     const { mouseOutHandler } = this.props;
-    setTimeout(() => {
-      mouseOutHandler(currentTarget);
-    }, 500);
+    mouseOutHandler(currentTarget);
   }
+
   renderInnerList() {
     let result;
     const {
@@ -39,7 +40,8 @@ class MenuItem extends React.Component {
       innerListPosition,
       open,
       clickItemCallback,
-      triangleClassName } = this.props;
+      triangleClassName,
+      listHideDelay } = this.props;
 
     if (items) {
       result = (
@@ -50,6 +52,7 @@ class MenuItem extends React.Component {
           position={innerListPosition}
           clickItemCallback={clickItemCallback}
           triangleClassName={triangleClassName}
+          listHideDelay={listHideDelay}
           items={items} />
       );
     } else {
@@ -57,6 +60,7 @@ class MenuItem extends React.Component {
     }
     return result;
   }
+
   renderTriangle() {
     let result;
     const { items, triangleClassName } = this.props;
@@ -77,6 +81,7 @@ class MenuItem extends React.Component {
     }
     return result;
   }
+
   render() {
     const { itemClass, text } = this.props;
     return (
@@ -108,6 +113,7 @@ MenuItem.propTypes = {
   itemClass: React.PropTypes.string,
   listClass: React.PropTypes.string,
   text: React.PropTypes.string,
+  listHideDelay: React.PropTypes.number,
 };
 
 export default MenuItem;

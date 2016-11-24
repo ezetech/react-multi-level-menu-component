@@ -10,12 +10,15 @@ class MenuButton extends React.Component {
     }
     this.toggleMenu = this.toggleMenu.bind(this);
   }
+
   toggleMenu() {
     this.setState({menuShown: !this.state.menuShown});
   }
+
   clickItemCallback(itemName) {
     console.log(itemName);
   }
+  
   render() {
     return(
       <div className="example-buttonContainer">
@@ -24,7 +27,7 @@ class MenuButton extends React.Component {
           listClass={'context-menu dark-transparent'}
           itemClass={'context-menu-item'}
           triangleClassName={'context-menu-item-triangle'}
-
+          listHideDelay={500}
           clickItemCallback={this.clickItemCallback}
           show={this.state.menuShown} items={deepItems} />
       </div>

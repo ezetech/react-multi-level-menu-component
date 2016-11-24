@@ -61,7 +61,5 @@
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
     "react/wrap-multilines": 0,
-    "jsx-a11y/no-static-element-interactions": 0,
-    "no-unused-expressions": 0,
   }
 }
