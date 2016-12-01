@@ -61,5 +61,6 @@
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
     "react/wrap-multilines": 0,
+    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }]
   }
 }
