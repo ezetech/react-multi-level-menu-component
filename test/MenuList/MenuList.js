@@ -46,10 +46,16 @@ describe('Menu List Component - Hover on item with inner list: ', function () {
     const listClass = 'listClass';
     const itemSelector = `.${itemClass}`;
     const listSelector = `.${listClass}`;
-    const wrapper = mount(<MenuList
-      show items={deepItems}
-      listClass={listClass}
-      itemClass={itemClass} />);
+
+    const wrapper = mount(
+      <MenuList
+        show
+        items={deepItems}
+        listClass={listClass}
+        itemClass={itemClass}
+      />
+    );
+
     wrapper.find(itemSelector).first().simulate('mouseenter');
     expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(1);
   });
@@ -60,11 +66,16 @@ describe('Menu List Component - Hover on item with inner list: ', function () {
     const itemSelector = `.${itemClass}`;
     const listSelector = `.${listClass}`;
 
-    const wrapper = mount(<MenuList
-      show items={deepItems}
-      listClass={listClass}
-      listHideTimeout={listHideTimeout}
-      itemClass={itemClass} />);
+    const wrapper = mount(
+      <MenuList
+        show
+        items={deepItems}
+        listClass={listClass}
+        listHideTimeout={listHideTimeout}
+        itemClass={itemClass}
+      />
+    );
+
     wrapper.find(itemSelector).first().simulate('mouseenter');
     wrapper.find(itemSelector).first().simulate('mouseleave');
     setTimeout(function () {
@@ -80,11 +91,16 @@ describe('Menu List Component - Hover on item with inner list: ', function () {
     const itemSelector = `.${itemClass}`;
     const listSelector = `.${listClass}`;
 
-    const wrapper = mount(<MenuList
-      show items={deepItems}
-      listClass={listClass}
-      listHideTimeout={listHideTimeout}
-      itemClass={itemClass} />);
+    const wrapper = mount(
+      <MenuList
+        show
+        items={deepItems}
+        listClass={listClass}
+        listHideTimeout={listHideTimeout}
+        itemClass={itemClass}
+      />
+    );
+
     wrapper.find(itemSelector).first().simulate('mouseenter');
     wrapper.find(itemSelector).first().simulate('mouseleave');
     wrapper.find(itemSelector).first().simulate('mouseenter');
@@ -102,10 +118,15 @@ describe('Menu List Component - Hover on item without inner list: ', function ()
     const itemSelector = `.${itemClass}`;
     const listSelector = `.${listClass}`;
 
-    const wrapper = mount(<MenuList
-      show items={flatItems}
-      listClass={listClass}
-      itemClass={itemClass} />);
+    const wrapper = mount(
+      <MenuList
+        show
+        items={flatItems}
+        listClass={listClass}
+        itemClass={itemClass}
+      />
+    );
+
     wrapper.find(itemSelector).first().simulate('mouseover');
     expect(wrapper.find(itemSelector).first().find(listSelector).length).to.equal(0);
   });
@@ -119,10 +140,15 @@ describe('Menu List Component - Click on item:', function () {
     const clickItemCallback = function () {};
     const spy = chai.spy(clickItemCallback);
 
-    const wrapper = mount(<MenuList
-      show items={deepItems}
-      clickItemCallback={clickItemCallback}
-      listClass={listClass} itemClass={itemClass} />);
+    const wrapper = mount(
+      <MenuList
+        show
+        items={deepItems}
+        clickItemCallback={clickItemCallback}
+        listClass={listClass}
+        itemClass={itemClass}
+      />
+    );
 
     wrapper.find(itemSelector).first().simulate('click');
     spy.should.not.have.been.called();
@@ -135,10 +161,15 @@ describe('Menu List Component - Click on item:', function () {
     const clickItemCallback = function () {};
     const spy = chai.spy(clickItemCallback);
 
-    const wrapper = mount(<MenuList
-      show items={flatItems}
-      clickItemCallback={spy}
-      listClass={listClass} itemClass={itemClass} />);
+    const wrapper = mount(
+      <MenuList
+        show
+        items={flatItems}
+        clickItemCallback={spy}
+        listClass={listClass}
+        itemClass={itemClass}
+      />
+    );
 
     wrapper.find(itemSelector).first().simulate('click');
     spy.should.have.been.called.with(flatItems[0].name);
