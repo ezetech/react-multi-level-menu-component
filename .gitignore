@@ -6,3 +6,5 @@ tmp
 coverage
 node_modules/
 example/node_modules
+npm-debug.log
+.DS_Store
