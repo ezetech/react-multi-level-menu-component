@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuItem from '../menu-item';
+import MenuItem from '../MenuItem';
 
 class MenuList extends React.Component {
   static calculateItemsListPosition(element) {

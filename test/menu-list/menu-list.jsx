@@ -2,7 +2,7 @@ import React from 'react';
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
 import { shallow, mount } from 'enzyme';
-import MenuList from '../../src/menu-list';
+import MenuList from '../../src/MenuList';
 import flatItems from '../fixtures/flat-items.json';
 import deepItems from '../fixtures/deep-items.json';
 
