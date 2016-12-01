@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { PropTypes as toBe } from 'react';
 import MenuItem from '../MenuItem';
 
 class MenuList extends React.Component {
+
   static calculateItemsListPosition(element) {
     const top = element.offsetTop;
     const left = element.offsetWidth;
@@ -11,6 +12,7 @@ class MenuList extends React.Component {
 
   constructor(...args) {
     super(...args);
+
     this.state = {
       openItem: null,
       openItemPosition: null,
@@ -37,15 +39,10 @@ class MenuList extends React.Component {
 
   getStyle() {
     const { position } = this.props;
-    let result;
 
-    if (position) {
-      const { position: { top, left } } = this.props;
-      result = { top, left };
-    } else {
-      result = null;
-    }
-    return result;
+    return position
+      ? { top: position.top, left: position.left }
+      : null;
   }
 
   showItemsList(index, element) {
@@ -75,7 +72,8 @@ class MenuList extends React.Component {
       items,
       clickItemCallback,
       triangleClassName,
-      listHideDelay } = this.props;
+      listHideDelay,
+    } = this.props;
 
     return items.map((item, i) => (
       <MenuItem
@@ -91,8 +89,9 @@ class MenuList extends React.Component {
         text={item.text}
         mouseOutHandler={this.getItemListHider(i)}
         mouseOverHandler={this.getItemListShower(i)}
-        {...item} />
-      ));
+        {...item}
+      />
+    ));
   }
 
   render() {
@@ -103,25 +102,26 @@ class MenuList extends React.Component {
     return (
       <div
         style={this.getStyle()}
-        className={listClass}>
-        {this.renderItems()}
+        className={listClass}
+      >
+        { this.renderItems() }
       </div>
     );
   }
 }
 
 MenuList.propTypes = {
-  items: React.PropTypes.array,
-  show: React.PropTypes.bool,
-  triangleClassName: React.PropTypes.string,
-  position: React.PropTypes.shape({
-    top: React.PropTypes.number,
-    left: React.PropTypes.number,
+  items: toBe.array,
+  show: toBe.bool,
+  triangleClassName: toBe.string,
+  position: toBe.shape({
+    top: toBe.number,
+    left: toBe.number,
   }),
-  clickItemCallback: React.PropTypes.func,
-  listClass: React.PropTypes.string,
-  itemClass: React.PropTypes.string,
-  listHideDelay: React.PropTypes.number,
+  clickItemCallback: toBe.func,
+  listClass: toBe.string,
+  itemClass: toBe.string,
+  listHideDelay: toBe.number,
 };
 
 export default MenuList;
