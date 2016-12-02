@@ -1,12 +1,13 @@
-import React from 'react';
-import MenuList from '../menu-list';
+import React, { PropTypes as toBe } from 'react';
+import MenuList from '../MenuList';
 
 class MenuItem extends React.Component {
+
   constructor(...args) {
     super(...args);
-    this.state = {
-      childHovered: false,
-    };
+
+    this.state = { childHovered: false };
+
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -16,9 +17,7 @@ class MenuItem extends React.Component {
     e.stopPropagation();
 
     const { name, clickItemCallback, items } = this.props;
-    if (!items) {
-      clickItemCallback(name);
-    }
+    if (!items) { clickItemCallback(name); }
   }
 
   handleMouseEnter(e) {
@@ -32,7 +31,6 @@ class MenuItem extends React.Component {
   }
 
   renderInnerList() {
-    let result;
     const {
       itemClass,
       listClass,
@@ -41,10 +39,12 @@ class MenuItem extends React.Component {
       open,
       clickItemCallback,
       triangleClassName,
-      listHideDelay } = this.props;
+      listHideDelay,
+    } = this.props;
 
-    if (items) {
-      result = (
+    return !items
+      ? null
+      : (
         <MenuList
           listClass={listClass}
           itemClass={itemClass}
@@ -53,67 +53,62 @@ class MenuItem extends React.Component {
           clickItemCallback={clickItemCallback}
           triangleClassName={triangleClassName}
           listHideDelay={listHideDelay}
-          items={items} />
+          items={items}
+        />
       );
-    } else {
-      result = null;
-    }
-    return result;
   }
 
   renderTriangle() {
-    let result;
     const { items, triangleClassName } = this.props;
 
-    if (items) {
-      result = (
+    return !items
+      ? null
+      : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="12"
           height="12"
           className={triangleClassName}
-          viewBox="0 0 12 12">
+          viewBox="0 0 12 12"
+        >
           <path d="M11 6L3.5 10.33L3.5 1.67z" fill="#000000" />
         </svg>
       );
-    } else {
-      result = null;
-    }
-    return result;
   }
 
   render() {
     const { itemClass, text } = this.props;
     return (
-      <div
+      <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         onClick={this.handleClick}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        className={itemClass}>
-        {text}
-        {this.renderTriangle()}
-        {this.renderInnerList()}
+        className={itemClass}
+      >
+        { text }
+        { this.renderTriangle() }
+        { this.renderInnerList() }
       </div>
     );
   }
 }
 
 MenuItem.propTypes = {
-  name: React.PropTypes.string,
-  items: React.PropTypes.array,
-  triangleClassName: React.PropTypes.string,
-  open: React.PropTypes.bool,
-  innerListPosition: React.PropTypes.shape({
-    top: React.PropTypes.number,
-    left: React.PropTypes.number,
+  name: toBe.string,
+  items: toBe.array,
+  triangleClassName: toBe.string,
+  open: toBe.bool,
+  innerListPosition: toBe.shape({
+    top: toBe.number,
+    left: toBe.number,
   }),
-  clickItemCallback: React.PropTypes.func,
-  mouseOverHandler: React.PropTypes.func,
-  mouseOutHandler: React.PropTypes.func,
-  itemClass: React.PropTypes.string,
-  listClass: React.PropTypes.string,
-  text: React.PropTypes.string,
-  listHideDelay: React.PropTypes.number,
+  clickItemCallback: toBe.func,
+  mouseOverHandler: toBe.func,
+  mouseOutHandler: toBe.func,
+  itemClass: toBe.string,
+  listClass: toBe.string,
+  text: toBe.string,
+  listHideDelay: toBe.number,
 };
 
 export default MenuItem;
